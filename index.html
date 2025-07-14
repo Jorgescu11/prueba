@@ -18,6 +18,7 @@
       padding: 30px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(204, 0, 0, 0.3);
+      margin-bottom: 20px;
     }
     h1 {
       color: #cc0000;
@@ -28,6 +29,9 @@
       max-width: 600px;
       margin: 0 auto 10px;
     }
+    #contador {
+      margin-top: 30px;
+    }
   </style>
 </head>
 <body>
@@ -37,37 +41,30 @@
     <p>Este era un ejercicio de simulación de phishing organizado por el Departamento de IT.</p>
     <p>Tu acción ha sido registrada con fines de concienciación en ciberseguridad.</p>
     <p>Recuerda siempre verificar el origen de los correos antes de hacer clic en enlaces sospechosos.</p>
-  </div><br><br>
+  </div>
 
-   <br><div class="warning-box">
+  <div class="warning-box">
     <h2>🚫 Por favor, cierra esta página ahora</h2>
     <p>La visita ya ha sido registrada.</p>
-  </div></br>
+  </div>
 
-  <br><br><br>
-
+  <!-- Contador sin bloqueo -->
   <div id="contador"></div>
 
   <script>
-    if (!localStorage.getItem("visitaContada")) {
-      const div = document.getElementById("contador");
-      const link = document.createElement("a");
-      link.href = "https://www.contadorvisitasgratis.com";
-      link.title = "contador web";
+    const div = document.getElementById("contador");
+    const link = document.createElement("a");
+    link.href = "https://www.contadorvisitasgratis.com";
+    link.title = "contador de visitas para web";
 
-      const img = document.createElement("img");
-      img.src = "https://counter1.optistats.ovh/private/contadorvisitasgratis.php?c=18lxd6frfwh2sx6rumyfz1pred2828lp";
-      img.border = "0";
-      img.alt = "contador web";
-      img.title = "contador web";
+    const img = document.createElement("img");
+    img.src = "https://counter1.optistats.ovh/private/contadorvisitasgratis.php?c=7wurlxryydzeu1n1as7xgshhx4wly682";
+    img.border = "0";
+    img.alt = "contador de visitas para web";
+    img.title = "contador de visitas para web";
 
-      link.appendChild(img);
-      div.appendChild(link);
-
-      localStorage.setItem("visitaContada", "true");
-    } else {
-      console.log("Visita ya registrada, contador no cargado.");
-    }
+    link.appendChild(img);
+    div.appendChild(link);
   </script>
 </body>
 </html>
