@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>¡Advertencia de Seguridad!</title>
-	<link rel="icon" href="warning.png" type="image/png">
+  <link rel="icon" href="warning.png" type="image/png">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -36,12 +36,32 @@
 </head>
 <body>
   <div class="warning-box">
-    <h1><b>¡ATENCIÓN!</b>
-	<h2>⚠️ ¡No deberías haber hecho clic en este enlace! ⚠️</h2>
+    <h1><b>¡ATENCIÓN!</b></h1>
+    <h2>⚠️ ¡No deberías haber hecho clic en este enlace! ⚠️</h2>
     <p>Este era un ejercicio de simulación de phishing organizado por el Departamento de IT.</p>
     <p>Tu acción ha sido registrada con fines de concienciación en ciberseguridad.</p>
     <p>Recuerda siempre verificar el origen de los correos antes de hacer clic en enlaces sospechosos.</p>
   </div>
-<br><br><br><a href="https://www.contadorvisitasgratis.com" title="contador web"><img src="https://counter1.optistats.ovh/private/contadorvisitasgratis.php?c=18lxd6frfwh2sx6rumyfz1pred2828lp" border="0" title="contador web" alt="contador web"></a></br></br></br>
+
+  <br><br><br>
+
+  <div id="contador">
+    <!-- El contador solo se mostrará si no se ha contado ya -->
+    <script>
+      if (!localStorage.getItem("visitaContada")) {
+        // Mostrar imagen del contador y marcar que ya se contó
+        document.write(`
+          <a href="https://www.contadorvisitasgratis.com" title="contador web">
+            <img src="https://counter1.optistats.ovh/private/contadorvisitasgratis.php?c=18lxd6frfwh2sx6rumyfz1pred2828lp" border="0" title="contador web" alt="contador web">
+          </a>
+        `);
+        localStorage.setItem("visitaContada", "true");
+      } else {
+        // Ya fue contado, no mostrar nada
+        console.log("Visita ya registrada.");
+      }
+    </script>
+  </div>
+
 </body>
 </html>
