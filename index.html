@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>¡Advertencia de Seguridad!</title>
-  <link rel="icon" href="warning.png" type="image/png">
+  <link rel="icon" href="img/warning.png" type="image/png">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -18,10 +18,6 @@
       padding: 30px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(204, 0, 0, 0.3);
-    }
-    .warning-icon {
-      width: 80px;
-      margin-bottom: 20px;
     }
     h1 {
       color: #cc0000;
@@ -45,23 +41,28 @@
 
   <br><br><br>
 
-  <div id="contador">
-    <!-- El contador solo se mostrará si no se ha contado ya -->
-    <script>
-      if (!localStorage.getItem("visitaContada")) {
-        // Mostrar imagen del contador y marcar que ya se contó
-        document.write(`
-          <a href="https://www.contadorvisitasgratis.com" title="contador web">
-            <img src="https://counter1.optistats.ovh/private/contadorvisitasgratis.php?c=18lxd6frfwh2sx6rumyfz1pred2828lp" border="0" title="contador web" alt="contador web">
-          </a>
-        `);
-        localStorage.setItem("visitaContada", "true");
-      } else {
-        // Ya fue contado, no mostrar nada
-        console.log("Visita ya registrada.");
-      }
-    </script>
-  </div>
+  <div id="contador"></div>
 
+  <script>
+    if (!localStorage.getItem("visitaContada")) {
+      const div = document.getElementById("contador");
+      const link = document.createElement("a");
+      link.href = "https://www.contadorvisitasgratis.com";
+      link.title = "contador web";
+
+      const img = document.createElement("img");
+      img.src = "https://counter1.optistats.ovh/private/contadorvisitasgratis.php?c=18lxd6frfwh2sx6rumyfz1pred2828lp";
+      img.border = "0";
+      img.alt = "contador web";
+      img.title = "contador web";
+
+      link.appendChild(img);
+      div.appendChild(link);
+
+      localStorage.setItem("visitaContada", "true");
+    } else {
+      console.log("Visita ya registrada, contador no cargado.");
+    }
+  </script>
 </body>
 </html>
