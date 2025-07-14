@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>¡Advertencia de Seguridad!</title>
-  <link rel="icon" href="img/warning.png" type="image/png" />
+  <link rel="icon" href="img/warning.png" type="image/png">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -18,31 +18,19 @@
       padding: 30px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(204, 0, 0, 0.3);
-      max-width: 600px;
-      margin: 0 auto 20px auto;
     }
     h1 {
       color: #cc0000;
-      margin-bottom: 10px;
     }
     p {
       font-size: 18px;
       color: #333;
-      margin: 10px 0;
-    }
-    .submensaje {
-      font-weight: bold;
-      color: #444;
-      margin-top: 10px;
-      margin-bottom: 30px;
-    }
-    #contador {
-      margin-bottom: 15px;
+      max-width: 600px;
+      margin: 0 auto 10px;
     }
   </style>
 </head>
 <body>
-  <!-- Primer aviso -->
   <div class="warning-box">
     <h1><b>¡ATENCIÓN!</b></h1>
     <h2>⚠️ ¡No deberías haber hecho clic en este enlace! ⚠️</h2>
@@ -51,33 +39,34 @@
     <p>Recuerda siempre verificar el origen de los correos antes de hacer clic en enlaces sospechosos.</p>
   </div>
 
-  <!-- Mensaje para cerrar la página -->
-  <div class="warning-box" style="margin-top: 0;">
+   <br><div class="warning-box">
     <h2>🚫 Por favor, cierra esta página ahora</h2>
-    <p>Actualizar o dejar abierta esta página no cambia tu estado. La visita ya ha sido registrada.</p>
-  </div>
+    <p>La visita ya ha sido registrada.</p>
+  </div></br>
 
-  <!-- Contador y mensaje -->
-  <div id="contador">
-    <!-- Aquí siempre mostramos la imagen, sin link para evitar suma -->
-    <img
-      src="https://counter1.optistats.ovh/private/contadorvisitasgratis.php?c=18lxd6frfwh2sx6rumyfz1pred2828lp"
-      border="0"
-      title="contador web"
-      alt="contador web"
-    />
-  </div>
-  <div id="mensaje" class="submensaje"></div>
+  <br><br><br>
+
+  <div id="contador"></div>
 
   <script>
-    const mensaje = document.getElementById("mensaje");
-
     if (!localStorage.getItem("visitaContada")) {
-      // Primera visita: marcarla pero NO sumamos porque imagen no está en enlace
-      mensaje.textContent = "✅ Tu visita ha sido registrada.";
+      const div = document.getElementById("contador");
+      const link = document.createElement("a");
+      link.href = "https://www.contadorvisitasgratis.com";
+      link.title = "contador web";
+
+      const img = document.createElement("img");
+      img.src = "https://counter1.optistats.ovh/private/contadorvisitasgratis.php?c=18lxd6frfwh2sx6rumyfz1pred2828lp";
+      img.border = "0";
+      img.alt = "contador web";
+      img.title = "contador web";
+
+      link.appendChild(img);
+      div.appendChild(link);
+
       localStorage.setItem("visitaContada", "true");
     } else {
-      mensaje.textContent = "✅ Ya habías sido registrado previamente.";
+      console.log("Visita ya registrada, contador no cargado.");
     }
   </script>
 </body>
