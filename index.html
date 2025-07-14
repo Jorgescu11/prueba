@@ -19,7 +19,7 @@
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(204, 0, 0, 0.3);
       max-width: 600px;
-      margin: 0 auto 20px auto; /* centrado con margen abajo */
+      margin: 0 auto 20px auto;
     }
     h1 {
       color: #cc0000;
@@ -52,46 +52,32 @@
   </div>
 
   <!-- Mensaje para cerrar la página -->
-  <br><div class="warning-box" style="margin-top: 0;"></br>
+  <div class="warning-box" style="margin-top: 0;">
     <h2>🚫 Por favor, cierra esta página ahora</h2>
-    <p>La visita ya ha sido registrada.</p>
+    <p>Actualizar o dejar abierta esta página no cambia tu estado. La visita ya ha sido registrada.</p>
   </div>
 
   <!-- Contador y mensaje -->
-  <div id="contador"></div>
+  <div id="contador">
+    <!-- Aquí siempre mostramos la imagen, sin link para evitar suma -->
+    <img
+      src="https://counter1.optistats.ovh/private/contadorvisitasgratis.php?c=18lxd6frfwh2sx6rumyfz1pred2828lp"
+      border="0"
+      title="contador web"
+      alt="contador web"
+    />
+  </div>
   <div id="mensaje" class="submensaje"></div>
 
   <script>
-    const divContador = document.getElementById("contador");
-    const divMensaje = document.getElementById("mensaje");
+    const mensaje = document.getElementById("mensaje");
 
     if (!localStorage.getItem("visitaContada")) {
-      // Primera visita: carga el contador sumando
-      const link = document.createElement("a");
-      link.href = "https://www.contadorvisitasgratis.com";
-      link.title = "contador web";
-
-      const img = document.createElement("img");
-      img.src = "https://counter1.optistats.ovh/private/contadorvisitasgratis.php?c=18lxd6frfwh2sx6rumyfz1pred2828lp";
-      img.border = "0";
-      img.alt = "contador web";
-      img.title = "contador web";
-
-      link.appendChild(img);
-      divContador.appendChild(link);
-
-      divMensaje.textContent = "✅ Tu visita ha sido registrada.";
+      // Primera visita: marcarla pero NO sumamos porque imagen no está en enlace
+      mensaje.textContent = "✅ Tu visita ha sido registrada.";
       localStorage.setItem("visitaContada", "true");
     } else {
-      // Ya contaste: solo muestra imagen sin link (no suma)
-      const img = document.createElement("img");
-      img.src = "https://counter1.optistats.ovh/private/contadorvisitasgratis.php?c=18lxd6frfwh2sx6rumyfz1pred2828lp";
-      img.border = "0";
-      img.alt = "contador web";
-      img.title = "contador web";
-
-      divContador.appendChild(img);
-      divMensaje.textContent = "✅ Ya habías sido registrado previamente.";
+      mensaje.textContent = "✅ Ya habías sido registrado previamente.";
     }
   </script>
 </body>
